@@ -1,0 +1,127 @@
+.footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	height: 80px;
+	width: clamp(100px, 100%, 100%);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 0 auto;
+	background-color: white;
+	z-index: 1;
+}
+
+.footer__container-links {
+	margin: auto 0 auto auto;
+	display: flex;
+	flex-direction: row;
+}
+
+.footer__link {
+	height: 22px;
+	width: min-content;
+	font-family: 'Roboto', Arial, sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 24px;
+	color: #1A1B22;
+	text-decoration: none;
+	margin: 0 15px 0 0;
+}
+
+.footer__link:hover {
+	cursor: pointer;
+}
+
+.footer__link:last-child {
+	margin-right: 40px;
+}
+
+.footer__text {
+	font-family: 'Roboto', Arial, sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 22px;
+	color: #B6BCBF;
+	margin: 32px auto 0 104px;
+}
+
+@media screen and (max-width: 300px) {
+	.footer {
+		height: min-content;
+		justify-content: center;
+		flex-direction: column-reverse;
+	}
+
+	.footer__container-links {
+		flex-direction: row;
+		margin: 0 auto;
+	}
+
+	.footer__link {
+		text-align: left;
+		height: 13px;
+		font-size: 12px;
+		line-height: 15px;
+	}
+
+	.footer__link:last-child {
+		margin-right: 0;
+	}
+
+	.footer__text {
+		margin: 5px auto 2px;
+		font-size: 11px;
+		line-height: 14px;
+	}
+}
+
+@media screen and (min-width: 300.5px) and (max-width: 500px) {
+	.footer {
+		height: min-content;
+		width: 100%;
+		justify-content: center;
+		flex-direction: column-reverse;
+	}
+
+	.footer__container-links {
+		flex-direction: row;
+		margin: 0 auto;
+	}
+
+	.footer__link {
+		text-align: left;
+		height: min-content;
+		font-size: 13px;
+		line-height: 16px;
+	}
+
+	.footer__link:last-child {
+		margin-right: 0;
+	}
+
+	.footer__text {
+		margin: 10px auto 5px;
+		font-size: 13px;
+		line-height: 16px;
+	}
+}
+
+@media screen and (min-width: 500.5px) and (max-width: 800px) {
+	.footer {
+		height: min-content;
+		width: 100%;
+	}
+
+	.footer__text {
+		margin: 5px 0 5px 40px;
+		width: 250px;
+	}
+
+	.footer__container-links {
+		margin: 5px 0 5px 0;
+	}
+}

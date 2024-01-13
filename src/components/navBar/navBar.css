@@ -1,0 +1,49 @@
+.navigation-bar {
+  background-color: transparent;
+  padding: auto 1rem;
+}
+
+.navigation-bar__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.navigation-bar__item {
+  margin-right: 1rem;
+}
+
+.navigation-bar__item:hover .navigation-bar__button {
+  box-sizing: border-box;
+  border-bottom: 2px solid #64646475;
+}
+
+.navigation-bar__button {
+  max-height: 36px;
+  width: max-content;
+  background-color: #f4f4f4;
+  background-color: transparent;
+  text-shadow: 0px 0px 5px #333333;
+  color: #333;
+  border: 1px solid #49494923;
+  border-bottom-width: 2px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.4s ease-in-out;
+}
+
+.checked {
+  box-sizing: border-box;
+  border-bottom: 2px solid #0000009f;
+}
+
+.navigation-bar__button:hover {
+  background-color: #ddd;
+  background-color: transparent;
+  text-shadow: 0px 0px 0px #333333;
+}

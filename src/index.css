@@ -1,3 +1,30 @@
+/* ! app */
+@import url('./components/app/app.css');
+
+/* ! preloader */
+@import url('./components/preloader/preloader.css');
+
+/* ! header */
+@import url('./components/header/header.css');
+
+/* ! navbar */
+@import url('./components/navBar/navBar.css');
+
+/* ! navmenu */
+@import url('./components/navMenu/navMenu.css');
+
+/* ! popup */
+@import url('./components/popup/popup.css');
+
+/* ! timer */
+@import url('./components/timer/timer.css');
+
+/* ! playground */
+@import url('./components/playground/playground.css');
+
+/* ! footer */
+@import url('./components/footer/footer.css');
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

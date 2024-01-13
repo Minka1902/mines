@@ -1,0 +1,1740 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!      GLITCH      !!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
+.button-glitch,
+.button-glitch::after {
+    padding: 16px 20px;
+    font-size: 18px;
+    background: linear-gradient(45deg, transparent 5%, #ff013c 5%);
+    border: 0;
+    color: #fff;
+    letter-spacing: 3px;
+    line-height: 1;
+    box-shadow: 6px 0px 0px #00e6f6;
+    outline: transparent;
+    position: relative;
+}
+
+.button-glitch::after {
+    --slice-0: inset(50% 50% 50% 50%);
+    --slice-1: inset(80% -6px 0 0);
+    --slice-2: inset(50% -6px 30% 0);
+    --slice-3: inset(10% -6px 85% 0);
+    --slice-4: inset(40% -6px 43% 0);
+    --slice-5: inset(80% -6px 5% 0);
+    content: attr(buttontext);
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 3%, #00e6f6 3%, #00e6f6 5%, #ff013c 5%);
+    text-shadow: -3px -3px 0px #f8f005, 3px 3px 0px #00e6f6;
+    clip-path: var(--slice-0);
+}
+
+.button-glitch:hover::after {
+    animation: 1s glitch;
+    animation-timing-function: steps(2, end);
+}
+
+@keyframes glitch {
+    0% {
+        clip-path: var(--slice-1);
+        transform: translate(-20px, -10px);
+    }
+
+    10% {
+        clip-path: var(--slice-3);
+        transform: translate(10px, 10px);
+    }
+
+    20% {
+        clip-path: var(--slice-1);
+        transform: translate(-10px, 10px);
+    }
+
+    30% {
+        clip-path: var(--slice-3);
+        transform: translate(0px, 5px);
+    }
+
+    40% {
+        clip-path: var(--slice-2);
+        transform: translate(-5px, 0px);
+    }
+
+    50% {
+        clip-path: var(--slice-3);
+        transform: translate(5px, 0px);
+    }
+
+    60% {
+        clip-path: var(--slice-4);
+        transform: translate(5px, 10px);
+    }
+
+    70% {
+        clip-path: var(--slice-2);
+        transform: translate(-10px, 10px);
+    }
+
+    80% {
+        clip-path: var(--slice-5);
+        transform: translate(20px, -10px);
+    }
+
+    90% {
+        clip-path: var(--slice-1);
+        transform: translate(-10px, 0px);
+    }
+
+    100% {
+        clip-path: var(--slice-1);
+        transform: translate(0);
+    }
+}
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!     GLOWING     !!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
+.container-glowing {
+    --glow-color: hsl(0, 85%, 52%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.glowing-btn {
+    position: relative;
+    color: var(--glow-color);
+    cursor: pointer;
+    padding: 0.35em 1em;
+    border: 0.15em solid var(--glow-color);
+    border-radius: 0.45em;
+    background: none;
+    perspective: 2em;
+    font-family: "Raleway", sans-serif;
+    font-size: 2em;
+    font-weight: 900;
+    letter-spacing: 1em;
+
+    -webkit-box-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
+        0px 0px 0.5em 0px var(--glow-color);
+    -moz-box-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
+        0px 0px 0.5em 0px var(--glow-color);
+    box-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
+        0px 0px 0.5em 0px var(--glow-color);
+    animation: border-flicker 2s linear infinite;
+}
+
+.glowing-word {
+    float: left;
+    margin-right: -0.8em;
+    -webkit-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
+        0 0 0.45em var(--glow-color);
+    -moz-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
+        0 0 0.45em var(--glow-color);
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color);
+    animation: text-flicker 3s linear infinite;
+}
+
+.faulty-letter {
+    opacity: 0.5;
+    animation: faulty-flicker 2s linear infinite;
+}
+
+.glowing-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.7;
+    filter: blur(1em);
+    transform: translateY(120%) rotateX(95deg) scale(1, 0.35);
+    background: var(--glow-color);
+    pointer-events: none;
+}
+
+.glowing-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    z-index: -1;
+    background-color: var(--glow-color);
+    box-shadow: 0 0 2em 0.2em var(--glow-color);
+    transition: opacity 100ms linear;
+}
+
+.glowing-btn:hover {
+    color: rgba(0, 0, 0, 0.8);
+    text-shadow: none;
+    animation: none;
+}
+
+.glowing-btn:hover .glowing-word {
+    animation: none;
+}
+
+.glowing-btn:hover .faulty-letter {
+    animation: none;
+    text-shadow: none;
+    opacity: 1;
+}
+
+.glowing-btn:hover:before {
+    filter: blur(1.5em);
+    opacity: 1;
+}
+
+.glowing-btn:hover:after {
+    opacity: 1;
+}
+
+@keyframes faulty-flicker {
+    0% {
+        opacity: 0.1;
+    }
+
+    2% {
+        opacity: 0.1;
+    }
+
+    4% {
+        opacity: 0.5;
+    }
+
+    19% {
+        opacity: 0.5;
+    }
+
+    21% {
+        opacity: 0.1;
+    }
+
+    23% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 0.5;
+    }
+
+    83% {
+        opacity: 0.4;
+    }
+
+    87% {
+        opacity: 1;
+    }
+}
+
+@keyframes text-flicker {
+    0% {
+        opacity: 0.1;
+    }
+
+    2% {
+        opacity: 1;
+    }
+
+    8% {
+        opacity: 0.1;
+    }
+
+    9% {
+        opacity: 1;
+    }
+
+    12% {
+        opacity: 0.1;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 0.3;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 0.7;
+    }
+
+    72% {
+        opacity: 0.2;
+    }
+
+    77% {
+        opacity: 0.9;
+    }
+
+    100% {
+        opacity: 0.9;
+    }
+}
+
+@keyframes border-flicker {
+    0% {
+        opacity: 0.1;
+    }
+
+    2% {
+        opacity: 1;
+    }
+
+    4% {
+        opacity: 0.1;
+    }
+
+    8% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 0.7;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .glowing-btn {
+        font-size: 1em;
+    }
+}
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!     ENCRYPT     !!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
+.button-encrypt {
+    --btn-default-bg: transparent;
+    --btn-padding: 15px 20px;
+    --btn-hover-bg: rgb(180, 180, 180);
+    --btn-transition: .3s;
+    --btn-letter-spacing: .1rem;
+    --btn-animation-duration: 1.2s;
+    --btn-shadow-color: rgba(0, 0, 0, 0.137);
+    --btn-shadow: 0 2px 10px 0 var(--btn-shadow-color);
+    --hover-btn-color: #000;
+    --default-btn-color: #000;
+    --font-size: 16px;
+    /* 👆 this field should not be empty */
+    --font-weight: 600;
+    --font-family: Menlo, Roboto Mono, monospace;
+    /* 👆 this field should not be empty */
+}
+
+.button-encrypt {
+    box-sizing: border-box;
+    padding: var(--btn-padding);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--default-btn-color);
+    font: var(--font-weight) var(--font-size) var(--font-family);
+    background: var(--btn-default-bg);
+    border: none;
+    border-radius: 20% 40%;
+    cursor: pointer;
+    transition: var(--btn-transition);
+    overflow: hidden;
+    box-shadow: var(--btn-shadow);
+}
+
+.button-encrypt span {
+    letter-spacing: var(--btn-letter-spacing);
+    transition: var(--btn-transition);
+    box-sizing: border-box;
+    position: relative;
+    background: inherit;
+}
+
+.button-encrypt span::before {
+    box-sizing: border-box;
+    position: absolute;
+    content: "";
+    background: inherit;
+}
+
+.button-encrypt:hover,
+.button-encrypt:focus {
+    background: var(--btn-hover-bg);
+}
+
+.button-encrypt:hover span,
+.button-encrypt:focus span {
+    color: var(--hover-btn-color);
+}
+
+.button-encrypt:hover span::before,
+.button-encrypt:focus span::before {
+    animation: chitchat linear both var(--btn-animation-duration);
+}
+
+@keyframes chitchat {
+    0% {
+        content: "#";
+    }
+
+    5% {
+        content: ".";
+    }
+
+    10% {
+        content: "^{";
+    }
+
+    15% {
+        content: "-!";
+    }
+
+    20% {
+        content: "#$_";
+    }
+
+    25% {
+        content: "№:0";
+    }
+
+    30% {
+        content: "#{+.";
+    }
+
+    35% {
+        content: "@}-?";
+    }
+
+    40% {
+        content: "?{4@%";
+    }
+
+    45% {
+        content: "=.,^!";
+    }
+
+    50% {
+        content: "?2@%";
+    }
+
+    55% {
+        content: "\;1}]";
+    }
+
+    60% {
+        content: "?{%:%";
+        right: 0;
+    }
+
+    65% {
+        content: "|{f[4";
+        right: 0;
+    }
+
+    70% {
+        content: "{4%0%";
+        right: 0;
+    }
+
+    75% {
+        content: "'1_0<";
+        right: 0;
+    }
+
+    80% {
+        content: "{0%";
+        right: 0;
+    }
+
+    85% {
+        content: "]>'";
+        right: 0;
+    }
+
+    90% {
+        content: "4";
+        right: 0;
+    }
+
+    95% {
+        content: "2";
+        right: 0;
+    }
+
+    100% {
+        content: "";
+        right: 0;
+    }
+}
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!      FOCUS      !!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
+.button-focus {
+    padding: 15px 20px;
+    font-size: 16px;
+    background: transparent;
+    border: none;
+    position: relative;
+    color: #f0f0f0;
+    z-index: 1;
+}
+
+.button-focus::after,
+.button-focus::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -99999;
+    transition: all .4s;
+}
+
+.button-focus::before {
+    transform: translate(0%, 0%);
+    width: 100%;
+    height: 100%;
+    background: #28282d;
+    border-radius: 10px;
+}
+
+.button-focus::after {
+    transform: translate(10px, 10px);
+    width: 35px;
+    height: 35px;
+    background: #ffffff15;
+    backdrop-filter: blur(5px);
+    border-radius: 50px;
+}
+
+.button-focus:hover::before {
+    transform: translate(5%, 20%);
+    width: 110%;
+    height: 110%;
+}
+
+.button-focus:hover::after {
+    border-radius: 10px;
+    transform: translate(0, 0);
+    width: 100%;
+    height: 100%;
+}
+
+.button-focus:active::after {
+    transition: 0s;
+    transform: translate(0, 5%);
+}
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!      LIKE      !!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
+.container-like {
+    margin: auto;
+    display: flex;
+    width: 50px;
+}
+
+.button-like {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    position: relative;
+}
+
+.button-like::after {
+    content: attr(buttontext);
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    font-size: 11px;
+    color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    opacity: 0;
+    visibility: hidden;
+    transition: .2s linear;
+    top: 115%;
+}
+
+.icon-like {
+    width: 100%;
+    max-height: 25px;
+    transition: .2s linear;
+}
+
+.icon-like path {
+    transition: .2s linear;
+}
+
+.button-like:hover>.icon-like {
+    transform: scale(1.2);
+}
+
+.button-like:hover>.icon-like path {
+    fill: red;
+}
+
+.button-like:hover::after {
+    visibility: visible;
+    opacity: 1;
+    top: 105%;
+}
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!      FOLLOW      !!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
+.button-follow {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.button-follow__part {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+}
+
+.button-follow__card {
+    width: 90px;
+    height: 90px;
+    outline: none;
+    border: none;
+    background: white;
+}
+
+.card1 {
+    border-radius: 90px 5px 5px 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    transition: .2s ease-in-out;
+}
+
+.follow-instagram {
+    margin-top: 1.5em;
+    margin-left: 1.2em;
+    fill: #cc39a4;
+}
+
+.card2 {
+    border-radius: 5px 90px 5px 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    transition: .2s ease-in-out;
+}
+
+.follow-twitter {
+    margin-top: 1.5em;
+    margin-left: -.9em;
+    fill: #03A9F4;
+}
+
+.card3 {
+    border-radius: 5px 5px 5px 90px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    transition: .2s ease-in-out;
+}
+
+.follow-github {
+    margin-top: -.6em;
+    margin-left: 1.2em;
+}
+
+.card4 {
+    border-radius: 5px 5px 90px 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    transition: .2s ease-in-out;
+}
+
+.follow-linkedin {
+    margin-top: -.9em;
+    margin-left: -1.2em;
+    fill: #8c9eff;
+}
+
+.card1:hover .follow-instagram,
+.card2:hover .follow-twitter,
+.card3:hover .follow-github,
+.card4:hover .follow-linkedin {
+    fill: #FFFFFF;
+}
+
+.button-follow__card:hover {
+    cursor: pointer;
+    scale: 1.1;
+}
+
+.card1:hover {
+    background: linear-gradient(90deg, #ecfd02 0%, #f700ff 100%);
+}
+
+.card2:hover {
+    background-color: #03A9F4;
+}
+
+.card3:hover {
+    background-color: black;
+}
+
+.card4:hover {
+    background-color: #8c9eff;
+}
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!      BUBBLES      !!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
+.button-bubbles {
+    padding: 1em 2em;
+    font-size: 17px;
+    background: transparent;
+    border: none;
+    position: relative;
+    color: white;
+    z-index: 1;
+}
+
+.button-bubbles::after,
+.button-bubbles::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -99999;
+    transition: all .4s;
+}
+
+.button-bubbles::before {
+    transform: translate(0%, 0%);
+    width: 100%;
+    height: 100%;
+    background: darkblue;
+    border-radius: 50px;
+}
+
+.button-bubbles::after {
+    transform: translate(0px, 0px);
+    width: 10px;
+    height: 10px;
+    background: #ff00d03c;
+    backdrop-filter: blur(5px);
+    border-radius: 50px;
+}
+
+.button-bubbles:hover::before {
+    transform: translate(5%, 20%);
+    width: 10px;
+    height: 10px;
+}
+
+.button-bubbles:hover::after {
+    border-radius: 50px;
+    transform: translate(0, 0);
+    width: 100%;
+    height: 100%;
+}
+
+.button-bubbles:active::after {
+    transition: 0s;
+    transform: translate(0, 5%);
+}
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!     SLICED     !!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
+.button-slice {
+    background-color: transparent;
+    padding: 1.2rem 2.5rem;
+    border: 2px solid #fff;
+    border-radius: 0rem;
+    color: #fff;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.3rem;
+    position: relative;
+    -moz-transition: all 1000ms cubic-bezier(0.890, -0.170, 0.140, 1.225);
+    -o-transition: all 1000ms cubic-bezier(0.890, -0.170, 0.140, 1.225);
+    transition: all 1000ms cubic-bezier(0.890, -0.170, 0.140, 1.225);
+    /* custom */
+    -moz-transition-timing-function: cubic-bezier(0.890, -0.170, 0.140, 1.225);
+    -o-transition-timing-function: cubic-bezier(0.890, -0.170, 0.140, 1.225);
+    transition-timing-function: cubic-bezier(0.890, -0.170, 0.140, 1.225);
+    /* custom */
+}
+
+.button-slice .top {
+    position: relative;
+    height: 6px;
+    overflow: hidden;
+    top: 0;
+    -moz-transition: all 300ms cubic-bezier(1.000, -0.055, 0.025, 1.040);
+    -o-transition: all 300ms cubic-bezier(1.000, -0.055, 0.025, 1.040);
+    transition: all 300ms cubic-bezier(1.000, -0.055, 0.025, 1.040);
+    /* custom */
+    -moz-transition-timing-function: cubic-bezier(1.000, -0.055, 0.025, 1.040);
+    -o-transition-timing-function: cubic-bezier(1.000, -0.055, 0.025, 1.040);
+    transition-timing-function: cubic-bezier(1.000, -0.055, 0.025, 1.040);
+    /* custom */
+    -webkit-transition-delay: 0.35s;
+    -moz-transition-delay: 0.35s;
+    -ms-transition-delay: 0.35s;
+    -o-transition-delay: 0.35s;
+    transition-delay: 0.35s;
+}
+
+.button-slice .bottom {
+    position: relative;
+    height: 6px;
+    overflow: hidden;
+    bottom: 0;
+    -moz-transition: all 300ms cubic-bezier(1.000, -0.055, 0.025, 1.040);
+    -o-transition: all 300ms cubic-bezier(1.000, -0.055, 0.025, 1.040);
+    transition: all 300ms cubic-bezier(1.000, -0.055, 0.025, 1.040);
+    /* custom */
+    -moz-transition-timing-function: cubic-bezier(1.000, -0.055, 0.025, 1.040);
+    -o-transition-timing-function: cubic-bezier(1.000, -0.055, 0.025, 1.040);
+    transition-timing-function: cubic-bezier(1.000, -0.055, 0.025, 1.040);
+    /* custom */
+    -webkit-transition-delay: 0.35s;
+    -moz-transition-delay: 0.35s;
+    -ms-transition-delay: 0.35s;
+    -o-transition-delay: 0.35s;
+    transition-delay: 0.35s;
+}
+
+.button-slice .bottom span {
+    top: -6px;
+    position: absolute;
+    left: 0;
+}
+
+.button-slice:hover .top {
+    top: -5px;
+    -webkit-transition-delay: 0.35s;
+    -moz-transition-delay: 0.35s;
+    -ms-transition-delay: 0.35s;
+    -o-transition-delay: 0.35s;
+    transition-delay: 0.35s;
+}
+
+.button-slice:hover .bottom {
+    bottom: -5px;
+    -webkit-transition-delay: 0.35s;
+    -moz-transition-delay: 0.35s;
+    -ms-transition-delay: 0.35s;
+    -o-transition-delay: 0.35s;
+    transition-delay: 0.35s;
+}
+
+.button-slice:hover,
+.button-slice:focus,
+.button-slice:active {
+    margin-left: 10px;
+}
+
+.button-slice:before {
+    content: '';
+    height: 1px;
+    width: 60px;
+    background-color: #fff;
+    position: absolute;
+    margin-top: 6px;
+    right: -35px;
+    -moz-transition: all 1000ms cubic-bezier(0.890, -0.170, 0.140, 1.225);
+    -o-transition: all 1000ms cubic-bezier(0.890, -0.170, 0.140, 1.225);
+    transition: all 1000ms cubic-bezier(0.890, -0.170, 0.140, 1.225);
+    /* custom */
+    -moz-transition-timing-function: cubic-bezier(0.890, -0.170, 0.140, 1.225);
+    -o-transition-timing-function: cubic-bezier(0.890, -0.170, 0.140, 1.225);
+    transition-timing-function: cubic-bezier(0.890, -0.170, 0.140, 1.225);
+    /* custom */
+}
+
+.button-slice:hover:before {
+    width: 130%;
+}
+
+.theme_light-sliced {
+    color: #000;
+    border-color: #000;
+}
+
+.theme_light-sliced::before {
+    background-color: black;
+}
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!!     SAVE     !!!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
+.button-save {
+    --icon-size: 24px;
+    --icon-secondary-color: rgb(77, 77, 77);
+    --icon-hover-color: rgb(97, 97, 97);
+    --icon-primary-color: gold;
+    --icon-circle-border: 1px solid var(--icon-primary-color);
+    --icon-circle-size: 35px;
+    --icon-anmt-duration: 0.3s;
+}
+
+.button-save .button-save_input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: none;
+}
+
+.button-save .bookmark {
+    width: var(--icon-size);
+    height: auto;
+    fill: var(--icon-secondary-color);
+    cursor: pointer;
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    -webkit-transform-origin: top;
+    -ms-transform-origin: top;
+    transform-origin: top;
+}
+
+.bookmark::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    -webkit-box-shadow: 0 30px 0 -4px var(--icon-primary-color),
+        30px 0 0 -4px var(--icon-primary-color),
+        0 -30px 0 -4px var(--icon-primary-color),
+        -30px 0 0 -4px var(--icon-primary-color),
+        -22px 22px 0 -4px var(--icon-primary-color),
+        -22px -22px 0 -4px var(--icon-primary-color),
+        22px -22px 0 -4px var(--icon-primary-color),
+        22px 22px 0 -4px var(--icon-primary-color);
+    box-shadow: 0 30px 0 -4px var(--icon-primary-color),
+        30px 0 0 -4px var(--icon-primary-color),
+        0 -30px 0 -4px var(--icon-primary-color),
+        -30px 0 0 -4px var(--icon-primary-color),
+        -22px 22px 0 -4px var(--icon-primary-color),
+        -22px -22px 0 -4px var(--icon-primary-color),
+        22px -22px 0 -4px var(--icon-primary-color),
+        22px 22px 0 -4px var(--icon-primary-color);
+    border-radius: 50%;
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+}
+
+.bookmark::before {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    border: var(--icon-circle-border);
+    opacity: 0;
+}
+
+.button-save:hover .bookmark {
+    fill: var(--icon-hover-color);
+}
+
+.button-save .button-save_input:checked+.bookmark::after {
+    -webkit-animation: circles var(--icon-anmt-duration) cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    animation: circles var(--icon-anmt-duration) cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    -webkit-animation-delay: var(--icon-anmt-duration);
+    animation-delay: var(--icon-anmt-duration);
+}
+
+.button-save .button-save_input:checked+.bookmark {
+    fill: var(--icon-primary-color);
+    -webkit-animation: bookmark var(--icon-anmt-duration) forwards;
+    animation: bookmark var(--icon-anmt-duration) forwards;
+    -webkit-transition-delay: 0.3s;
+    -o-transition-delay: 0.3s;
+    transition-delay: 0.3s;
+}
+
+.button-save .button-save_input:checked+.bookmark::before {
+    -webkit-animation: circle var(--icon-anmt-duration) cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    animation: circle var(--icon-anmt-duration) cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    -webkit-animation-delay: var(--icon-anmt-duration);
+    animation-delay: var(--icon-anmt-duration);
+}
+
+@-webkit-keyframes bookmark {
+    50% {
+        -webkit-transform: scaleY(0.6);
+        transform: scaleY(0.6);
+    }
+
+    100% {
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+    }
+}
+
+@keyframes bookmark {
+    50% {
+        -webkit-transform: scaleY(0.6);
+        transform: scaleY(0.6);
+    }
+
+    100% {
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+    }
+}
+
+@-webkit-keyframes circle {
+    from {
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+
+    90% {
+        width: var(--icon-circle-size);
+        height: var(--icon-circle-size);
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes circle {
+    from {
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+
+    90% {
+        width: var(--icon-circle-size);
+        height: var(--icon-circle-size);
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes circles {
+    from {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+
+    40% {
+        opacity: 1;
+    }
+
+    to {
+        -webkit-transform: scale(0.8);
+        transform: scale(0.8);
+        opacity: 0;
+    }
+}
+
+@keyframes circles {
+    from {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+
+    40% {
+        opacity: 1;
+    }
+
+    to {
+        -webkit-transform: scale(0.8);
+        transform: scale(0.8);
+        opacity: 0;
+    }
+}
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!     HAMBURGER     !!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
+.button-hamburger {
+    cursor: pointer;
+}
+
+.button-hamburger .button-hamburger_input {
+    display: none;
+}
+
+.button-hamburger svg {
+    /* The size of the SVG defines the overall size */
+    height: 3em;
+    /* Define the transition for transforming the SVG */
+    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line {
+    fill: none;
+    stroke: black;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 3;
+    /* Define the transition for transforming the Stroke */
+    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+        stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line-top-bottom {
+    stroke-dasharray: 12 63;
+}
+
+.button-hamburger .button-hamburger_input:checked+svg {
+    transform: rotate(-45deg);
+}
+
+.button-hamburger .button-hamburger_input:checked+svg .line-top-bottom {
+    stroke-dasharray: 20 300;
+    stroke-dashoffset: -32.42;
+}
+
+.button-hamburger__theme_light {
+    stroke: #f0f0f0;
+}
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!!!     LOCK     !!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
+.btn-lock {
+    position: absolute;
+    top: calc(50% - 32px);
+    left: calc(50% - 32px);
+    display: inline-block;
+    background: #ff5b5b;
+    width: 64px;
+    height: 64px;
+    box-sizing: border-box;
+    padding: 12px 0 0 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-lock svg {
+    fill: none;
+    margin-left: 3px;
+    margin-top: 7px;
+    transform: translate3d(0, 0, 0);
+}
+
+.btn-lock svg .bling {
+    stroke: #fff;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-dasharray: 3;
+    stroke-dashoffset: 15;
+    transition: all 0.3s ease;
+}
+
+.btn-lock svg .lock {
+    stroke: #fff;
+    stroke-width: 4;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    stroke-dasharray: 36;
+    transition: all 0.4s ease;
+}
+
+.btn-lock svg .lockb {
+    fill: #fff;
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    transform: rotate(8deg);
+    transform-origin: 14px 20px;
+    transition: all 0.2s ease;
+}
+
+#inpLock {
+    display: none;
+}
+
+#inpLock:checked+label {
+    background: #20cca5;
+}
+
+#inpLock:checked+label svg {
+    opacity: 1;
+}
+
+#inpLock:checked+label svg .bling {
+    animation: bling6132 0.3s linear forwards;
+    animation-delay: 0.2s;
+}
+
+#inpLock:checked+label svg .lock {
+    stroke-dasharray: 48;
+    animation: locked 0.3s linear forwards;
+}
+
+#inpLock:checked+label svg .lockb {
+    transform: rotate(0);
+    transform-origin: 14px 22px;
+}
+
+@keyframes bling6132 {
+    50% {
+        stroke-dasharray: 3;
+        stroke-dashoffset: 12;
+    }
+
+    100% {
+        stroke-dasharray: 3;
+        stroke-dashoffset: 9;
+    }
+}
+
+@keyframes locked {
+    50% {
+        transform: translateY(1px);
+    }
+}
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!      MERGE      !!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
+.button__merge {
+    transition: all 0.5s;
+    font-size: 17px;
+    padding: 1ch 2ch;
+    background-color: white;
+    color: #000;
+    font-family: Roboto, sans-serif;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 2px 2px 0px hsl(0, 0%, 90%),
+        4px 4px 0px hsl(0, 0%, 80%),
+        6px 6px 0px hsl(0, 0%, 70%),
+        8px 8px 0px hsl(0, 0%, 60%),
+        10px 10px 0px hsl(0, 0%, 50%),
+        12px 12px 0px hsl(0, 0%, 40%),
+        14px 14px 0px hsl(0, 0%, 30%),
+        16px 16px 0px hsl(0, 0%, 20%),
+        18px 18px 0px hsl(0, 0%, 10%);
+}
+
+.button__merge:hover {
+    background-color: hsl(0, 0%, 50%);
+    color: #fff;
+    box-shadow: none;
+}
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!      MERGE      !!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
+.checkbox-wrapper {
+    --text: #414856;
+    --check: #4F29F0;
+    --disabled: #C3C8DE;
+    --border-radius: 10px;
+    --background: transparent;
+    border-radius: var(--border-radius);
+    position: relative;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 30px auto;
+    align-items: center;
+}
+
+.checkbox-wrapper label {
+    color: var(--text);
+    position: relative;
+    cursor: pointer;
+    display: grid;
+    align-items: center;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    transition: color 0.3s ease;
+}
+
+.checkbox-wrapper label::before,
+.checkbox-wrapper label::after {
+    content: "";
+    position: absolute;
+}
+
+.checkbox-wrapper label::before {
+    height: 2px;
+    width: 8px;
+    left: -27px;
+    background: var(--check);
+    border-radius: 2px;
+    transition: background 0.3s ease;
+}
+
+.checkbox-wrapper label:after {
+    height: 4px;
+    width: 4px;
+    top: 8px;
+    left: -25px;
+    border-radius: 50%;
+}
+
+.checkbox-wrapper input[type=checkbox] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    height: 15px;
+    width: 15px;
+    outline: none;
+    border: 0;
+    margin: 0 15px 0 0;
+    cursor: pointer;
+    background: var(--background);
+    display: grid;
+    align-items: center;
+}
+
+.checkbox-wrapper input[type=checkbox]::before,
+.checkbox-wrapper input[type=checkbox]::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    top: auto;
+    background: var(--check);
+    border-radius: 2px;
+}
+
+.checkbox-wrapper input[type=checkbox]::before {
+    width: 0px;
+    right: 60%;
+    transform-origin: right bottom;
+}
+
+.checkbox-wrapper input[type=checkbox]::after {
+    width: 0px;
+    left: 40%;
+    transform-origin: left bottom;
+}
+
+.checkbox-wrapper input[type=checkbox]:checked::before {
+    -webkit-animation: check-01-11 0.4s ease forwards;
+    animation: check-01-11 0.4s ease forwards;
+}
+
+.checkbox-wrapper input[type=checkbox]:checked::after {
+    -webkit-animation: check-02-11 0.4s ease forwards;
+    animation: check-02-11 0.4s ease forwards;
+}
+
+.checkbox-wrapper input[type=checkbox]:checked+label {
+    color: var(--disabled);
+    -webkit-animation: move-11 0.3s ease 0.1s forwards;
+    animation: move-11 0.3s ease 0.1s forwards;
+}
+
+.checkbox-wrapper input[type=checkbox]:checked+label::before {
+    background: var(--disabled);
+    -webkit-animation: slice-11 0.4s ease forwards;
+    animation: slice-11 0.4s ease forwards;
+}
+
+.checkbox-wrapper input[type=checkbox]:checked+label::after {
+    -webkit-animation: firework-11 0.5s ease forwards 0.1s;
+    animation: firework-11 0.5s ease forwards 0.1s;
+}
+
+@-webkit-keyframes move-11 {
+    50% {
+        padding-left: 8px;
+        padding-right: 0px;
+    }
+
+    100% {
+        padding-right: 4px;
+    }
+}
+
+@keyframes move-11 {
+    50% {
+        padding-left: 8px;
+        padding-right: 0px;
+    }
+
+    100% {
+        padding-right: 4px;
+    }
+}
+
+@-webkit-keyframes slice-11 {
+    60% {
+        width: 100%;
+        left: 4px;
+    }
+
+    100% {
+        width: 100%;
+        left: -2px;
+        padding-left: 0;
+    }
+}
+
+@keyframes slice-11 {
+    60% {
+        width: 100%;
+        left: 4px;
+    }
+
+    100% {
+        width: 100%;
+        left: -2px;
+        padding-left: 0;
+    }
+}
+
+@-webkit-keyframes check-01-11 {
+    0% {
+        width: 4px;
+        top: auto;
+        transform: rotate(0);
+    }
+
+    50% {
+        width: 0px;
+        top: auto;
+        transform: rotate(0);
+    }
+
+    51% {
+        width: 0px;
+        top: 8px;
+        transform: rotate(45deg);
+    }
+
+    100% {
+        width: 5px;
+        top: 8px;
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes check-01-11 {
+    0% {
+        width: 4px;
+        top: auto;
+        transform: rotate(0);
+    }
+
+    50% {
+        width: 0px;
+        top: auto;
+        transform: rotate(0);
+    }
+
+    51% {
+        width: 0px;
+        top: 8px;
+        transform: rotate(45deg);
+    }
+
+    100% {
+        width: 5px;
+        top: 8px;
+        transform: rotate(45deg);
+    }
+}
+
+@-webkit-keyframes check-02-11 {
+    0% {
+        width: 4px;
+        top: auto;
+        transform: rotate(0);
+    }
+
+    50% {
+        width: 0px;
+        top: auto;
+        transform: rotate(0);
+    }
+
+    51% {
+        width: 0px;
+        top: 8px;
+        transform: rotate(-45deg);
+    }
+
+    100% {
+        width: 10px;
+        top: 8px;
+        transform: rotate(-45deg);
+    }
+}
+
+@keyframes check-02-11 {
+    0% {
+        width: 4px;
+        top: auto;
+        transform: rotate(0);
+    }
+
+    50% {
+        width: 0px;
+        top: auto;
+        transform: rotate(0);
+    }
+
+    51% {
+        width: 0px;
+        top: 8px;
+        transform: rotate(-45deg);
+    }
+
+    100% {
+        width: 10px;
+        top: 8px;
+        transform: rotate(-45deg);
+    }
+}
+
+@-webkit-keyframes firework-11 {
+    0% {
+        opacity: 1;
+        box-shadow: 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        box-shadow: 0 -15px 0 0px #4F29F0, 14px -8px 0 0px #4F29F0, 14px 8px 0 0px #4F29F0, 0 15px 0 0px #4F29F0, -14px 8px 0 0px #4F29F0, -14px -8px 0 0px #4F29F0;
+    }
+}
+
+@keyframes firework-11 {
+    0% {
+        opacity: 1;
+        box-shadow: 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        box-shadow: 0 -15px 0 0px #4F29F0, 14px -8px 0 0px #4F29F0, 14px 8px 0 0px #4F29F0, 0 15px 0 0px #4F29F0, -14px 8px 0 0px #4F29F0, -14px -8px 0 0px #4F29F0;
+    }
+}
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!!      Add      !!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
+.add-button {
+    --sign-width: 45px;
+    --text-width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: var(--sign-width);
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: #2F71E5;
+}
+
+/* plus sign */
+.add-button__sign {
+    position: absolute;
+    margin-left: 18px;
+    margin-top: 3px;
+    width: 100%;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-button__sign svg {
+    width: 17px;
+}
+
+.add-button:hover .add-button__sign svg {
+    animation: rotate 4s linear infinite;
+}
+
+.add-button__sign svg path {
+    fill: #FFFFFF;
+}
+
+.add-button:hover .no-rotate svg {
+    animation: none;
+}
+
+/* text */
+.add-button__text {
+    position: absolute;
+    right: 0%;
+    width: 0%;
+    height: 1.1em;
+    overflow: hidden;
+    opacity: 0;
+    color: white;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition-duration: .3s;
+}
+
+/* hover effect on button width */
+.add-button:hover {
+    width: calc(var(--sign-width) + var(--text-width));
+    border-radius: 40px;
+    transition-duration: .3s;
+}
+
+.add-button:hover .add-button__sign {
+    width: 30%;
+    transition-duration: .3s;
+    padding-left: 20px;
+}
+
+/* hover effect button's text */
+.add-button:hover .add-button__text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: .3s;
+    padding-right: 10px;
+}
+
+/* button click effect*/
+.add-button:active {
+    transform: translate(2px, 2px);
+}
+
+@keyframes rotateRefresh {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!      SUBMIT      !!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
+.button-submit {
+    position: relative;
+    outline: 0;
+    border: 1px solid transparent;
+    background-color: #488aec;
+    color: #ffffff;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px #488aec31, 0 2px 4px -1px #488aec17;
+}
+
+.button-submit .button-submit__span {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    transition: all .4s ease;
+}
+
+.button-submit svg {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.button-submit .button-submit__span:nth-child(2),
+.button-submit .button-submit__span:nth-child(3) {
+    position: absolute;
+    top: 40px;
+    color: #fff;
+}
+
+.button-submit .button-submit__span:nth-child(2) {
+    background-color: #488aec;
+}
+
+.button-submit .button-submit__span:nth-child(3) {
+    background-color: #488aec;
+}
+
+.button-submit:hover {
+    box-shadow: 0 10px 15px -3px #488aec4f, 0 4px 6px -2px #488aec17;
+}
+
+.button-submit:hover .button-submit__span:nth-child(2),
+.button-submit:focus .button-submit__span:nth-child(3) {
+    top: 0;
+}
+
+.button-submit:focus {
+    box-shadow: none;
+}

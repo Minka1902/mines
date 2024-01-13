@@ -1,0 +1,80 @@
+.app {
+    background-color: rgba(255, 255, 255, 0);
+    display: flex;
+    flex-direction: column;
+}
+
+#root {
+    height: 100vh;
+}
+
+.section__title {
+    width: auto;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.no-scroll {
+    overflow: hidden;
+    position: relative;
+}
+
+.signin {
+    color: rgb(0, 105, 204);
+    cursor: pointer;
+}
+
+.signin:hover {
+    color: rgb(0, 80, 150);
+}
+
+.settings-button__container:hover {
+    opacity: 1;
+}
+
+.settings-button__container {
+    position: fixed;
+    top: 74px;
+    left: 10px;
+    z-index: 1;
+    opacity: 0.7;
+    transition: .3s;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 80px;
+}
+
+@media screen and (max-width: 300px) {
+    section {
+        padding-bottom: 34px;
+    }
+}
+
+@media screen and (min-width: 300.5px) and (max-width: 500px) {
+    section {
+        padding-bottom: 47px;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .section__title {
+        width: calc(100% - 55px);
+        margin-right: 0;
+    }
+}
+
+@media screen and (min-width: 500.5px) and (max-width: 800px) {
+    section {
+        padding-bottom: 32px;
+    }
+}
+
+@media screen and (min-width: 1149.5px) {
+    .settings-button__container {
+        top: 84px;
+    }
+}
